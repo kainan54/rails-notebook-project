@@ -1,4 +1,5 @@
 class NoteBooksController < ApplicationController
+  load_and_authorize_resource
   before_action :set_note_book, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: %i[ new create edit update destroy ]
 
@@ -62,6 +63,6 @@ class NoteBooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def note_book_params
-      params.require(:note_book).permit(:title, sections_attributes: [:title])
+      params.require(:note_book).permit(:title, sections_attributes: [:title]).merge(user_id: current_user.id)
     end
 end

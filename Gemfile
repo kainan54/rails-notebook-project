@@ -50,9 +50,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-# devise helps with user auth(also uses bcrypt I think)
+# for user authen
 gem 'devise', '~> 4.2'
-
+# for authorization
+gem "cancancan"
 # needed for s3 bucket
 gem "aws-sdk-s3", require: false
 
