@@ -1,0 +1,29 @@
+<%= form_with(model: note_book) do |form| %>
+  <% if note_book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(note_book.errors.count, "error") %> prohibited this note_book from being saved:</h2>
+
+      <ul>
+        <% note_book.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="sub-form">
+    <%= form.fields_for :sections do |sections_form| %>
+      <%= sections_form.label :title %>
+       <%= sections_form.text_field :title %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
