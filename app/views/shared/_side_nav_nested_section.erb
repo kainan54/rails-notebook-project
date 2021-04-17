@@ -1,0 +1,22 @@
+<!-- clickable link -->
+<div class="side-nav-link-wrapper">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target=<%= "#o#{section.id}" %> aria-expanded="false" aria-controls="collapsePages">
+        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+            <%= section.title %>
+        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+    </a>
+    <%= link_to 'edit ➤', edit_section_path(section.id), class: 'side-nav-edit-link' if editMode %>
+    <%= link_to 'open ➤', section, class: 'side-nav-edit-link' if !editMode %>
+</div>
+<% if section.sections.length > 0 %>
+
+    <% section.sections.each do |nested_section| %>
+        <div class="collapse show" id=<%= "o#{section.id}" %> >
+            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                <%= render 'shared/side_nav_nested_section', section: nested_section, editMode: editMode %>
+            </nav>
+        </div>
+        
+        
+    <% end %>
+<% end %>

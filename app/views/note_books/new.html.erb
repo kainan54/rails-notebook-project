@@ -1,5 +1,16 @@
-<h1>New Note Book</h1>
 
-<%= render 'form', note_book: @note_book %>
+<div id='nb-form-page'>
+    <%= render "shared/top_nav" %>
+    <%= render "shared/side_nav",  note_book: @note_book, editMode: true %>
 
-<%= link_to 'Back', note_books_path %>
+    <div id="layoutSidenav_content">
+
+        <div id="create-card">
+            <h1>Create Notebook Outline</h1>  
+            <%= render 'form', note_book: @note_book, editMode: false %>   
+        </div>
+        <%= render "shared/footer" %>
+    </div>
+</div>
+<%= javascript_pack_tag 'custom/noteBookCreateUpdate', 'data-turbolinks-track': 'reload' %>
+

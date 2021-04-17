@@ -1,0 +1,32 @@
+<%
+=begin%>
+ 
+
+<% @users.each do |user| %>
+    <p><%= user.username %></p>
+<% end %>
+
+<% @note_books.each do |user| %>
+    <p><%= user.title %></p>
+<% end %> 
+<%
+
+=end%>
+
+<div id="search-page">
+    <%= render 'shared/top_nav' %>
+    <div id="combo-results-container" >
+        
+        <div id="col-container">
+            <h4>Notebooks</h4>
+            <%= render 'shared/note_book_collection_renderer', note_books: @note_books, usermode: false %>
+        </div>
+
+         <div id="col-container">
+            <h4>Users</h4>
+            <%= render 'shared/note_book_collection_renderer', note_books: @users, usermode: true %>
+        </div>
+
+    </div>
+    <%= render 'shared/footer' %>
+</div>

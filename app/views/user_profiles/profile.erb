@@ -1,0 +1,15 @@
+<div id="user-pro-page">
+    <h2 id="username-header"><%= @user_profile.username %></h2>
+    <%= render 'shared/top_nav' %>
+    <div id="user-profile-collection-container">
+        <div class="user-profile-sub-containter">
+            <h2>Notebooks</h2>
+            <%= render 'shared/note_book_collection_renderer', note_books: @user_profile.note_books, usermode: false %>
+        </div>
+        <div class="user-profile-sub-containter">
+            <h2>Saved Notebooks</h2>
+            <%= render 'shared/note_book_collection_renderer', note_books: @user_profile.saved_note_books, usermode: false %>
+        </div>
+    </div>
+    <%= render 'shared/footer' %>
+  </div>

@@ -1,0 +1,19 @@
+<div class='section-preview-card'>
+    <h3 class="section-title-link"><%= link_to section.title, section %><h3>
+
+    <div class="section-content-preview">
+        <%= section.content %>
+    </div>
+    
+    <% if section.sections.length > 0 %>
+        <div class="section-nested_links">
+            <div class="section-nested-links-contaianer">
+                <h4>Sub-Sections:</h4>
+                <% section.sections.each do |nested_section| %>
+                    <%= link_to nested_section.title, nested_section, class: 'nested-section-link' %>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+
+</div>

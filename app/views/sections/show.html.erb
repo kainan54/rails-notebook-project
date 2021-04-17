@@ -1,10 +1,46 @@
-<p id="notice"><%= notice %></p>
+<div id='section-page'>
+    <%= render "shared/top_nav" %>
+    <%= render "shared/side_nav",  note_book: @section.parent_note_book, editMode: false %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @section.title %>
-  <%= @section.content %>
-</p>
+    <div id="layoutSidenav_content">
 
-<%= link_to 'Edit', edit_section_path(@section) %> |
-<%= link_to 'Back', sections_path %>
+        <div id="create-card">
+          <h2><%= @section.title %></h2>
+          <div class="button-container">
+              <%= render 'shared/save_note_book_button', note_book: @section.parent_note_book %>
+              <%= render 'shared/edit_button', note_book: @section.parent_note_book %>
+          </div>
+
+          <div id="section-content-container">
+            <%= @section.content %>
+          </div>
+
+          <% if @section.sections.length > 0 || @section.parent_section %>
+            <div id="section-links" >
+
+              <div id="section-nested-links">
+                <h2> Sub-Sections: </h2>
+                <ul>
+                  <% @section.sections.each do |section| %>
+                    <li><%= link_to section.title, section %></li>
+                  <% end %>
+                  </ul>
+              </div>
+
+              <div id="section-parent-link">
+                <h2> Parent-Section:</h2>
+                <% if @section.parent_section %>
+
+                  
+                  <%= link_to @section.parent_section.title, @section.parent_section %>
+                  
+                <% end %>
+
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <%= render "shared/footer" %>
+    </div>
+</div>
+<%= javascript_pack_tag 'custom/likeBtn', 'data-turbolinks-track': 'reload' %>

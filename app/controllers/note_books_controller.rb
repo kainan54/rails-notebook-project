@@ -5,7 +5,11 @@ class NoteBooksController < ApplicationController
 
   # GET /note_books or /note_books.json
   def index
-    @note_books = NoteBook.all
+    @page_number = params[:page].to_i - 1
+    @page_number = 0 if @page_number < 0
+    
+    # Note: should move this to the model later
+    @note_books = NoteBook.all.limit(30).offset(30 * (@page_number) ).order(updated_at: :DESC);
   end
 
   # GET /note_books/1 or /note_books/1.json
@@ -15,7 +19,7 @@ class NoteBooksController < ApplicationController
   # GET /note_books/new
   def new
     @note_book = NoteBook.new
-    @note_book.sections.build
+     # @note_book.sections.build
   end
 
   # GET /note_books/1/edit
@@ -63,6 +67,6 @@ class NoteBooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def note_book_params
-      params.require(:note_book).permit(:title, sections_attributes: [:title]).merge(user_id: current_user.id)
+      params.require(:note_book).permit(:title, sections_attributes: [:title, :id, :_destroy]).merge(user_id: current_user.id)
     end
 end

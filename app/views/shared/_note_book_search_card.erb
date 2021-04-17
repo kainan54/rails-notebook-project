@@ -1,0 +1,8 @@
+<div class="nb-search-card">
+    <% if !usermode %>
+        <h3><%= link_to note_book.title, note_book %> </h3>
+        <h3><%= link_to "By #{note_book.user.username}", user_profile_path(note_book.user.id), class: 'author' %></h3>
+    <% else %>
+        <h3><%= link_to note_book.username, user_profile_path(note_book.id) %></h3>
+    <% end %>
+</div>

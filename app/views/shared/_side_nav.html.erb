@@ -1,0 +1,34 @@
+<div id="layoutSidenav">
+
+    <div id="layoutSidenav_nav">
+
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+
+            <div class="sb-sidenav-menu">
+
+                <div class="nav">
+                
+                    <!-- Heading -->
+                    <div class="sb-sidenav-menu-heading">
+                     
+                        <%= link_to note_book.title, edit_note_book_path(note_book.id) if editMode && note_book.id %>
+                        <%= link_to note_book.title, note_book if !editMode %>
+                
+                    </div>
+                    <% if note_book && note_book.sections %>
+                        <% note_book.sections.sort_by { |section| section.created_at }.each do |section| %>
+
+                            <%= render 'shared/side_nav_nested_section', section: section, editMode: editMode %>
+
+                        <% end %>
+              
+                    <% end %>
+
+
+          
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        Start Bootstrap
+                    </div>
+                </nav>
+            </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_06_175125) do
+ActiveRecord::Schema.define(version: 2021_04_17_175500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,12 +62,21 @@ ActiveRecord::Schema.define(version: 2021_04_06_175125) do
     t.index ["user_id"], name: "index_note_books_on_user_id"
   end
 
+  create_table "saved_note_book_joins", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "note_book_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "sections", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "note_book_id", null: false
+    t.bigint "note_book_id"
+    t.bigint "parent_section_id"
     t.index ["note_book_id"], name: "index_sections_on_note_book_id"
+    t.index ["parent_section_id"], name: "index_sections_on_parent_section_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -83,10 +92,12 @@ ActiveRecord::Schema.define(version: 2021_04_06_175125) do
     t.integer "role", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "note_books", "users"
   add_foreign_key "sections", "note_books"
+  add_foreign_key "sections", "sections", column: "parent_section_id"
 end

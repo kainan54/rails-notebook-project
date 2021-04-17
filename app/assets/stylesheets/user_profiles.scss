@@ -1,0 +1,39 @@
+@import "mixins";
+
+#user-pro-page {
+  text-align: center;
+  @include profileView();
+  #user-profile-collection-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    justify-content: space-evenly;
+    .user-profile-sub-containter {
+      text-align: center;
+      text-decoration: underline;
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      .nb-search-card {
+        width: 31%;
+        h3 {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+  #username-header {
+    @include quickHeaderBlock();
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    @include quickHeaderBlock();
+    width: 80%;
+    align-self: center;
+    margin-bottom: 10px;
+  }
+}

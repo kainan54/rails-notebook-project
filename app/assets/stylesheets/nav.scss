@@ -1,0 +1,24 @@
+@import "mixins";
+.sb-sidenav-menu {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  @include scrollBar();
+  .nav {
+    height: 100%;
+  }
+  .side-nav-link-wrapper {
+    position: relative;
+  }
+  .side-nav-edit-link {
+    margin-left: 35px;
+  }
+
+  .sb-sidenav-footer {
+    margin-top: auto;
+  }
+}
+
+#nav-profile-btn {
+  width: 125px;
+}

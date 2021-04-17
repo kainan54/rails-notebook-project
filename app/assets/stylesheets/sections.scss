@@ -1,3 +1,43 @@
-// Place all the styles related to the Sections controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "mixins";
+#section-form-page,
+#section-page {
+  height: 100vh;
+  @include note_book_and_section_form();
+  @include create-card();
+}
+
+#section-page {
+  h2 {
+    text-decoration: underline;
+  }
+  #section-content-container {
+    height: 70%;
+    width: 100%;
+    .trix-content {
+      height: 100%;
+      width: 100%;
+      overflow-y: scroll;
+      @include scrollBar();
+      box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+      border-radius: 4px;
+      border: white 2px solid;
+      padding: 5px 15px 5px 15px;
+    }
+  }
+  #section-links {
+    width: 100%;
+    display: flex;
+
+    #section-nested-links,
+    #section-parent-link {
+      margin: 3px;
+      margin-top: 8px;
+      text-align: center;
+      width: 100%;
+      border: white 2px solid;
+      padding: 5px;
+      border-radius: 4px;
+      box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+    }
+  }
+}

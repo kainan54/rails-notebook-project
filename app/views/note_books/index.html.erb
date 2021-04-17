@@ -1,25 +1,19 @@
-<p id="notice"><%= notice %></p>
+<div id="nb-browse-page">
+  <div id="nb-browse-header"><h2>Explore</h2></div>
+  <%= render 'shared/top_nav' %>
+  <%= render 'shared/note_book_collection_renderer', note_books: @note_books, usermode: false %>
 
-<h1>Note Books</h1>
+  <div id="results-btns">
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @note_books.each do |note_book| %>
-      <tr>
-        <td><%= link_to 'Show', note_book %></td>
-        <td><%= link_to 'Edit', edit_note_book_path(note_book) %></td>
-        <td><%= link_to 'Destroy', note_book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% if ( ( (@page_number.to_i + 1) * 30)  < NoteBook.count ) %>
+      <%= button_to 'Next Page', note_books_browse_path(@page_number + 2), method: :get, class: 'next-btn' %>
     <% end %>
-  </tbody>
-</table>
 
-<br>
+    <% if @page_number > 0 %>
+      <%= button_to 'Prev Page', note_books_browse_path(@page_number), method: :get, class: 'next-btn' %>
+    <% end %>
 
-<%= link_to 'New Note Book', new_note_book_path %>
+  </div>
+
+  <%= render 'shared/footer' %>
+</div>

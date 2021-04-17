@@ -1,0 +1,10 @@
+<div id="note-book-collection-container">
+    
+    <% note_books.each do |note_book| %>
+        <%= render "shared/note_book_search_card", note_book: note_book, usermode: false %>
+    <% end if !usermode %>
+
+    <% note_books.each do |note_book| %>
+        <%= render "shared/note_book_search_card", note_book: note_book, usermode: true %>
+    <% end if usermode %>
+</div>

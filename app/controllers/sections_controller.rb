@@ -59,6 +59,6 @@ class SectionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def section_params
-      params.require(:section).permit(:title, :content)
+      params.require(:section).permit(:title, :content, sections_attributes: [:title, :id, :_destroy])
     end
 end

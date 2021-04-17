@@ -8,22 +8,22 @@
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
+
     </div>
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label :title %><br>
     <%= form.text_field :title %>
   </div>
-
-  <div class="sub-form">
-    <%= form.fields_for :sections do |sections_form| %>
-      <%= sections_form.label :title %>
-       <%= sections_form.text_field :title %>
-    <% end %>
-  </div>
+  
+  <%= form.fields_for :sections do |section| %>
+        <%= render 'section_fields', f: section %>
+  <% end %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= link_to_add_association 'Add a section', form, :sections %>
+    <%= form.submit editMode ? 'Update Outline' : 'Create Outline' %><br>
+    <%= link_to 'Cancel', note_books_browse_path(1) %>
   </div>
 <% end %>

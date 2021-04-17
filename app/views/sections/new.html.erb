@@ -1,5 +1,13 @@
-<h1>New Section</h1>
+<div id='section-form-page'>
+    <%= render "shared/top_nav" %>
+    <%= render "shared/side_nav",  note_book: @section.parent_note_book, editMode: true %>
 
-<%= render 'form', section: @section %>
+    <div id="layoutSidenav_content">
 
-<%= link_to 'Back', sections_path %>
+        <div id="create-card">
+            <h1>Edit Section</h1>  
+            <%= render 'form', section: @section %>
+        </div>
+        <%= render "shared/footer" %>
+    </div>
+</div>

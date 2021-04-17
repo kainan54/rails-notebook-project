@@ -1,0 +1,8 @@
+
+<% if !!current_user %>
+    <% if current_user.has_user_saved_note_book(note_book.id) %>
+            <%= button_to "Unlike", toggle_note_book_likes_path, class: "nb-like-btn", params: { user_id: current_user.id, note_book_id: note_book.id } %>
+    <% else %>
+            <%= button_to "Like", toggle_note_book_likes_path, class: "nb-like-btn", params: { user_id: current_user.id, note_book_id: note_book.id } %>
+    <% end %>
+<% end %>
