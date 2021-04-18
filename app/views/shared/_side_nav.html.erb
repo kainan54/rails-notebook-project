@@ -27,8 +27,14 @@
 
           
                     <div class="sb-sidenav-footer">
+                    <% if current_user %>
                         <div class="small">Logged in as:</div>
-                        Start Bootstrap
-                    </div>
+                            <%= current_user.username.capitalize %>
+                        </div>
+                        <% else %>
+                        <div class="small">Logged in as:</div>
+                            <%= 'Guest' %>
+                        </div>
+                    <% end %>
                 </nav>
             </div>

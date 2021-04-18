@@ -1,8 +1,9 @@
 
 <% if !!current_user && current_user.id != other_user.id %>
     <% if current_user.is_following(other_user.id) %>
-            <%= button_to "Unfollow", toggle_follow_path, class: "nb-like-btn", params: { follower_id: current_user.id, followed_id: other_user.id } %>
+            <%= button_to "Unfollow", toggle_follow_path, class: "nb-follow-btn", params: { follower_id: current_user.id, followed_id: other_user.id } %>
     <% else %>
-            <%= button_to "Follow Author", toggle_follow_path, class: "nb-like-btn", params: { follower_id: current_user.id, followed_id: other_user.id } %>
+            <%= button_to "Follow Author", toggle_follow_path, class: "nb-follow-btn", params: { follower_id: current_user.id, followed_id: other_user.id } %>
     <% end %>
 <% end %>
+<%= javascript_pack_tag 'custom/followBtn', 'data-tubolinks-track': :reload %>

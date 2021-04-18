@@ -8,7 +8,7 @@
           <h2><%= @section.title %></h2>
           <div class="button-container">
               <%= render 'shared/save_note_book_button', note_book: @section.parent_note_book %>
-              <%= render 'shared/edit_button', note_book: @section.parent_note_book %>
+              <%= render 'shared/edit_button', note_book: @section.parent_note_book, section: @section %>
           </div>
 
           <div id="section-content-container">
@@ -43,4 +43,3 @@
         <%= render "shared/footer" %>
     </div>
 </div>
-<%= javascript_pack_tag 'custom/likeBtn', 'data-turbolinks-track': 'reload' %>

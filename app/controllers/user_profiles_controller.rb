@@ -8,6 +8,6 @@ class UserProfilesController < ApplicationController
         id = params[:followed_id].to_i
         return if current_user.id == id
 
-        current_user.is_following(id) ? FollowJoin.where(follower_id: current_user.id, followed_id: id).destroy : FollowJoin.create(follower_id: current_user.id, followed_id: id)
+        current_user.is_following(id) ? FollowJoin.where(follower_id: current_user.id, followed_id: id)[0].destroy : FollowJoin.create(follower_id: current_user.id, followed_id: id)
     end
 end

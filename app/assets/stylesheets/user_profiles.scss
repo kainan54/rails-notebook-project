@@ -4,14 +4,13 @@
   text-align: center;
   @include profileView();
   #user-profile-collection-container {
+    height: 69vh;
     display: flex;
     flex-direction: row;
-    height: 100%;
     width: 100%;
     justify-content: space-evenly;
     .user-profile-sub-containter {
       text-align: center;
-      text-decoration: underline;
       width: 50%;
       height: 100%;
       display: flex;

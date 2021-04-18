@@ -27,11 +27,12 @@
       }
 
       .nb-search-card {
+        width: 47%;
+        min-height: 50%;
+        height: fit-content;
         h3 {
-          margin: 0;
           font-size: 15px;
         }
-        width: 30%;
       }
     }
   }

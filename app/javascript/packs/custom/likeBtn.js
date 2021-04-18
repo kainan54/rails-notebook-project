@@ -1,18 +1,19 @@
 const likeButtonClickHandler = () => {
     const likeButton = document.querySelector('.nb-like-btn');
+    if (!likeButton) return;
 
-    likeButton.value === 'Unlike' ? likeButton.style["background-color"] = '#d3d3d3' : likeButton.style["background-color"] = '#DC143C';
+    likeButton.value === 'Unlike' ? likeButton.style["background"] = 'linear-gradient(to right, #74ebd5, #acb6e5)' : likeButton.style["background"] = 'linear-gradient(to right, #cb356b, #bd3f32)';
 
 
     const toggleLikeText = () => {
      
         if ( likeButton.value === "Unlike") {
             likeButton.value = "Like";
-            likeButton.style["background-color"] = '#DC143C';
+            likeButton.style['background'] = "linear-gradient(to right, #cb356b, #bd3f32)"
             
         } else {
             likeButton.value = "Unlike"
-            likeButton.style['background-color'] = "#d3d3d3"
+            likeButton.style["background"] = 'linear-gradient(to right, #74ebd5, #acb6e5)';
         }
         
     };

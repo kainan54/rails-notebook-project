@@ -9,57 +9,61 @@
 }
 
 #nb-page {
+  h1 {
+    @include quickHeaderBlock();
+    width: 65vw;
+    font-size: 30px;
+  }
   #create-card {
+    padding-top: 10px !important;
     align-items: flex-start;
-    h1 {
-      text-decoration: underline;
-      margin-bottom: 25px;
-    }
+    height: 65% !important;
   }
   .section-preview-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border-radius: 5px;
     height: fit-content;
-    min-height: 200px;
     max-height: 420px;
-    width: 100%;
-    padding: 5px 15px 5px 15px;
+    width: 98%;
+    padding: 15px;
     margin-bottom: 25px;
-    background-color: whitesmoke;
+    border: 4px solid rgba(3, 102, 214, 0.3);
+    border-left: none;
+    border-right: none;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
       rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
       rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    background-color: whitesmoke;
+    color: black;
+    .icon-container {
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+    }
     .section-title-link {
       text-align: center;
       text-decoration: underline;
       margin-bottom: 30px;
     }
-    .section-content-preview {
-      width: 100%;
-      .trix-content {
-        height: fit-content;
-        max-height: 300px;
-        width: 100%;
-        overflow-y: scroll;
-        @include scrollBar();
-      }
-    }
 
     .section-nested-links-contaianer {
       padding: 10px;
-      background-color: #212529;
       color: black;
       border-radius: 5px;
       height: 100px;
+      width: 100%;
       display: flex;
       flex-direction: column;
       overflow-y: scroll;
       text-align: center;
-      margin-top: 10px;
+      margin-top: auto;
+      border: 4px solid rgba(3, 102, 214, 0.3);
+      border-left: none;
+      border-right: none;
       h4 {
-        font-size: 20px;
-        margin-bottom: 2.5px;
-        color: whitesmoke;
-        text-decoration: underline;
+        font-size: 15px;
       }
       .nested-section-link {
         font-size: 20px;
@@ -72,6 +76,11 @@
         background: grey;
       }
     }
+    &:hover {
+      opacity: 0.6;
+      transform: translateY(-10px);
+      transition: 0.5s;
+    }
   }
 }
 
@@ -81,10 +90,10 @@
   padding-top: 60px;
   display: flex;
   flex-direction: column;
+  @include nb-collection-renderer();
   #nb-browse-header {
     @include quickHeaderBlock();
   }
-  @include nb-collection-renderer();
 
   #results-btns {
     display: flex;

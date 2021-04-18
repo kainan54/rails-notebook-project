@@ -3,15 +3,15 @@
     <%= render "shared/side_nav",  note_book: @note_book, editMode: false %>
 
     <div id="layoutSidenav_content">
-
-        <div id="create-card">
-
-            <h1><%= "#{@note_book.title}'s Contents" %></h1>
+            <div><h1><i class="fas fa-book"></i><%= "  #{@note_book.title}'s Contents" %> </h1></div>
             <div class="button-container">
                 <%= render 'shared/save_note_book_button', note_book: @note_book %>
-                <%= render 'shared/edit_button', note_book: @note_book %>
+                <%= render 'shared/edit_button', note_book: @note_book, section: nil %>
                 <%= render 'shared/follow_button', other_user: @note_book.user %>
             </div>
+        <div id="create-card">
+
+ 
             
             <% @note_book.sections.sort_by { |section| section.created_at }.each do |section| %>
                 
@@ -24,4 +24,4 @@
         <%= render "shared/footer" %>
     </div>
 </div>
-<%= javascript_pack_tag 'custom/likeBtn', 'data-turbolinks-track': 'reload' %>
+
