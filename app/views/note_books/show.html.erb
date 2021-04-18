@@ -10,6 +10,7 @@
             <div class="button-container">
                 <%= render 'shared/save_note_book_button', note_book: @note_book %>
                 <%= render 'shared/edit_button', note_book: @note_book %>
+                <%= render 'shared/follow_button', other_user: @note_book.user %>
             </div>
             
             <% @note_book.sections.sort_by { |section| section.created_at }.each do |section| %>

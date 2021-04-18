@@ -19,11 +19,11 @@ class User < ApplicationRecord
 
   has_many :saved_note_books, through: :saved_note_book_joins, source: :note_book
 
-  # has_many :follower_relationships, foreign_key: :followed_id, class_name: "FollowJoin"
-  # has_many :followers, through: :follower_relationships, source: :following
+  has_many :follower_relationships, foreign_key: :followed_id, class_name: "FollowJoin"
+  has_many :followers, through: :follower_relationships, source: :following
 
-  # has_many :following_relationships, foreign_key: :following_id, class_name: 'FollowJoin'
-  # has_many :following, through: :following_relationships, source: :followed
+  has_many :following_relationships, foreign_key: :follower_id, class_name: 'FollowJoin'
+  has_many :following, through: :following_relationships, source: :followed
 
   def self.filter_by_username(query)
     self.where("lower(username) like ?", "%#{query.downcase}%").limit(50).order(updated_at: :DESC)
@@ -39,5 +39,11 @@ class User < ApplicationRecord
     note_book_id.to_i
     
     NoteBook.find(note_book_id).user.id == self.id
+  end
+
+  def is_following(other_user_id)
+    other_user_id.to_i
+    
+    FollowJoin.where(follower_id: self.id, followed_id: other_user_id).count != 0
   end
 end

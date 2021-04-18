@@ -17,9 +17,9 @@
                     </div>
                     <% if note_book && note_book.sections %>
                         <% note_book.sections.sort_by { |section| section.created_at }.each do |section| %>
-
+                      
                             <%= render 'shared/side_nav_nested_section', section: section, editMode: editMode %>
-
+                    
                         <% end %>
               
                     <% end %>
